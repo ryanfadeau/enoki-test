@@ -8,7 +8,7 @@ Assurez-vous d'avoir docker et docker compose sur votre machine.
 
 Clôner le projet :
 ```bash
-git clone git@gitlab.com:ryanfadeau/test-enoki.git
+git clone git@gitlab.com:ryanfadeau/test-enoki.git .
 ```
 Lancer les docker : 
 
