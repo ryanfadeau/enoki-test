@@ -1,0 +1,80 @@
+{% extends 'base_layout.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Calendar | Enoki {% endblock %}
+{% block content %}
+    <div class="container mt-5">
+        
+        <div class="w-50 container">
+            <form class="form shadow p-3 mb-5 bg-white rounded" action='{% url 'calendar' %}' method='POST'>
+                {% csrf_token %}
+                <div class="form-row w-100 align-items-center justify-content-center">
+                    <div> calendrier du : </div>
+                    <div>
+                        {{ form.from_date | as_crispy_field }}
+                    </div>
+                    <div> au : </div>
+                    <div>
+                        {{ form.to_date | as_crispy_field }}
+                    </div>
+                    <div>
+                        <button type="submit" class="btn-sm btn-dark">valider</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div class="w-50 container">
+            <div class="shadow p-4 mb-5 bg-white rounded">
+                <h3> Nombre de jours </h3>
+                <hr />
+                <div>
+                    <div class="d-flex justify-content-between pb-2 pt-2 border-bottom">
+                        <div> Lundi : </div> 
+                        <div> {{ calendar.Monday }} </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between pb-2 pt-2 border-bottom">
+                        <div> Mardi :  </div>
+                        <div> {{ calendar.Tuesday }} </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between pb-2 pt-2 border-bottom">
+                        <div> Mercredi :  </div>
+                        <div> {{ calendar.Wednesday }} </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between pb-2 pt-2 border-bottom">
+                        <div> Jeudi :  </div>
+                        <div> {{ calendar.Thursday }} </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between pb-2 pt-2 border-bottom">
+                        <div> Vendredi :  </div>
+                        <div> {{ calendar.Friday }} </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between pb-2 pt-2 border-bottom">
+                        <div> Samedi :  </div>
+                        <div> {{ calendar.Saturday }} </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between pb-2 pt-2 border-bottom">
+                        <div> Dimanche :  </div>
+                        <div> {{ calendar.Sunday }} </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between pb-2 pt-2 border-bottom">
+                        <div> Jours fériés du Lundi au Samedi :  </div>
+                        <div> {{ calendar.public_day }} </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between pb-2 pt-2 border-bottom">
+                        <div> Jours fériés le dimanche :  </div>
+                        <div> {{ calendar.public_day_sunday }} </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

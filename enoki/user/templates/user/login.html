@@ -1,0 +1,31 @@
+{% extends 'base_layout.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Login | Enoki {% endblock %}
+{% block content %}
+{% for message in messages %}
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        {{ message }}
+      </div>
+{% endfor %}
+    <div class="container h-100 d-flex justify-content-center mt-5">
+        <div class="text-center shadow p-5 bg-white rounded">
+            <h3> LOGIN </h3>
+            <form class="form" action='{% url 'login' %}' method='POST'>
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div>
+                    <button type="submit" class="btn btn-dark mt-1">valider</button>
+                </div>
+            </form>
+            
+            <hr class="my-4">
+            <div>
+                <a href="{% url 'create-user' %}"> <button type="submit" class="btn btn-light"> CREATE ACCOUNT </button> </a>
+            </div>
+           
+        </div>
+    </div>
+{% endblock %}
