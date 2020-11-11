@@ -16,6 +16,9 @@ Lancer les docker :
 sudo docker-compose build
 sudo docker-compose up
 ```
+
+(Patienter 50s => délais ajouté pour attendre la mise en route de la base de donnée avant de lancer le serveur django)
+
 Dans un autre terminal, rentrer dans le container python et faire les migrations:
 ```bash
 docker-compose exec python bash
