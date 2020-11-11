@@ -4,16 +4,6 @@ volumes:
     pgdata:
 
 services:
-    python:
-        build: 
-            context: .
-            dockerfile: Dockerfile
-        volumes:
-            -  ./enoki:/enoki
-        ports: 
-            - 8000:8000
-        depends_on: 
-            - enoki_db
 
     enoki_db:
         image: postgres
@@ -25,6 +15,17 @@ services:
             - pgdata:/var/lib/postgresql/data
         ports: 
             - "5435:5432"
+
+    python:
+        build: 
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            -  ./enoki:/enoki
+        ports: 
+            - 8000:8000
+        depends_on: 
+            - enoki_db
 
     pdadmin_compose:
         image: dpage/pgadmin4
